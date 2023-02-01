@@ -42,7 +42,7 @@ Before we run the project, make sure that you are having MongoDB in your local s
 
 ### Step 1: Clone the repository
 ```bash
-git clone https://github.com/sethusaim/Sensor-Fault-Detection.git
+git clone https://github.com/ParisTian-DS/sensor-fault-detection.git
 ```
 
 ### Step 2- Create a conda environment after opening the repository
@@ -107,7 +107,5 @@ docker run -d -p 8080:8080 <IMAGE_NAME>
 To run the project  first execute the below commmand.
 
 ```
-run 
-```
-python main.py
+run python main.py
 ```
