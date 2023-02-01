@@ -1,2 +1,6 @@
 pymongo==4.2.0
--e . 
+from-root
+pandas
+numpy
+scikit-learn
+-e .
