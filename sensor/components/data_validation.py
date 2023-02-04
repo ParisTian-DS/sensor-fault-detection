@@ -21,7 +21,8 @@ class DataValidation:
     def validate_number_of_columns(self, dataframe:pd.DataFrame)->bool:
         try:
             number_of_columns = len(self._schema_config["columns"])
-           
+            logging.info(f"Required number of columns:{number_of_columns}")
+            logging.info(f"Data frame has columns: {len(dataframe.columns)}")
             if len(dataframe.columns) == number_of_columns:
                 return True
             return False
@@ -44,6 +45,7 @@ class DataValidation:
                     numerical_columns_present = False
                     missing_numerical_columns.append(num_column)
             logging.info(f"Missing numerical columns: [{missing_numerical_columns}]")
+            return numerical_columns_present
         except Exception as e:
             raise SensorException(e,sys)
 
@@ -119,9 +121,10 @@ class DataValidation:
                 valid_test_file_path=self.data_ingestion_artifact.test_file_path,
                 invalid_train_file_path=None,
                 invalid_test_file_path=None,
-                drift_report_file_path=self.data_validation_config.drift_report_file_path,
+                drift_report_file_path=self.data_validation_cofig.drift_report_file_path  
             )
-            
+            logging.info(f"Data validation artifact:{data_validation_artifact}")
+            return data_validation_artifact
         except Exception as e:
             raise SensorException(e, sys)
 
