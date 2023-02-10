@@ -11,4 +11,10 @@ xgboost
 fastapi
 uvicorn
 python-multipart
+seaborn
+matplotlib
+catboost
+kneed
+prettytable
+miceforest
 -e .
