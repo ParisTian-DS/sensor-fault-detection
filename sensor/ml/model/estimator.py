@@ -37,7 +37,7 @@ class ModelResolver:
         except Exception as e:
             raise e
     
-    def get_best_model(self,)->str:
+    def get_best_model_path(self,)->str:
         try:
             timestamps = list(map(int, os.listdir(self.model_dir)))
             latest_timestamp = max(timestamps)
@@ -62,4 +62,7 @@ class ModelResolver:
 
             return True
         except Exception as e:
-            raise 
+            raise e
+
+
+

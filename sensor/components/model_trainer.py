@@ -3,7 +3,7 @@ from sensor.exception import SensorException
 from sensor.logger import logging
 from sensor.entity.artifact_entity import DataTransformationArtifact, ModelTrainerArtifact
 from sensor.entity.config_entity import ModelTrainerConfig
-import sys, os
+import os, sys
 from xgboost import XGBClassifier
 from sensor.ml.metrics.classification_metric import get_classification_score
 from sensor.ml.model.estimator import SensorModel
@@ -59,14 +59,14 @@ class ModelTrainer:
             if diff > self.model_trainer_config.overfitting_underfitting_threshold:
                 raise Exception("Model is not good try to do more experimentation.")
 
-            model_dir_path = os.path.dirname(self.model_trainer_config.trained_model_dir_file_path)  #trained_model_file_path??
+            model_dir_path = os.path.dirname(self.model_trainer_config.trained_model_file_path)  #trained_model_file_path??
             os.makedirs(model_dir_path,exist_ok = True)
             preprocessor = load_object(file_path = self.data_transformation_artifact.transformed_object_file_path)
             sensor_model = SensorModel(preprocessor = preprocessor, model= model)
-            save_object(model_dir_path, obj=sensor_model)
+            save_object(self.model_trainer_config.trained_model_file_path, obj=sensor_model)
 
             # model trainer artifact
-            model_trainer_artifact = ModelTrainerArtifact(trained_model_file_path = self.model_trainer_config.trained_model_dir_file_path,
+            model_trainer_artifact = ModelTrainerArtifact(trained_model_file_path = self.model_trainer_config.trained_model_file_path,
                                 train_metric_artifact = classification_train_metric,
                                 test_metirc_artifact= classification_test_metric )
 
