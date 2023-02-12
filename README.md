@@ -111,7 +111,3 @@ run python main.py
 ```
 
 
-delete       
-- name: Stop and remove sensor container if running
-run: |
-docker ps -q --filter "name=sensor" | grep -q . && docker stop sensor && docker rm -fv sensor
