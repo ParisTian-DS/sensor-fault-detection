@@ -94,7 +94,7 @@ class TrainPipeline:
     def sync_saved_model_dir_to_s3(self):
         try:
             aws_bucket_url = f"s3://{TRAINING_BUCKET_NAME}/{SAVED_MODEL_DIR}"
-            self.s3_sync.sync_folder_to_s3(folder = self.SAVED_MODEL_DIR, aws_bucket_url = aws_bucket_url)
+            self.s3_sync.sync_folder_to_s3(folder = SAVED_MODEL_DIR, aws_bucket_url = aws_bucket_url)
         except Exception as e:
             raise SensorException(e,sys)
 

@@ -17,4 +17,5 @@ catboost
 kneed
 prettytable
 miceforest
+python-dotenv
 -e .
